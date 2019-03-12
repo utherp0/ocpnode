@@ -1,2 +1,1 @@
-# ocpnode
-Example app for OCP demos - fast compile but with some useful features
+An example node.js app for fast compilation as part of an OCP demo

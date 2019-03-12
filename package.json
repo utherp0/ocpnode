@@ -1,0 +1,27 @@
+{
+  "name": "ocpnode",
+  "version": "0.0.1",
+  "description": "Node.js sample app for OCP",
+  "main": "server.js",
+  "dependencies": {
+      "express": "*",
+      "ejs": "*"
+  },
+  "engine": {
+    "node": "*",
+    "npm": "*"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/utherp0/ocpnode"
+  },
+  "author": "Ian 'Uther' Lawson",
+  "license": "",
+  "bugs": {
+    "url": "http://github.com/utherp0/ocpnode/issues"
+  },
+  "homepage": "http://github.com/utherp0/ocpnode"
+}
