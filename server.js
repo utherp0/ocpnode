@@ -7,6 +7,7 @@ var eps     = require('ejs');
 app.engine('html', require('ejs').renderFile);
 
 app.use( '/scripts', express.static('scripts'));
+app.use( '/styles', express.static('styles'));
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
 var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
