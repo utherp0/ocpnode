@@ -31,15 +31,19 @@ app.get('/page2.html', function (req,res) {
 });
 
 app.get('/page3.html', function (req,res) {
-  res.send( "<html>");
-  res.send( "  <head>");
-  res.send( "    <link rel='stylesheet' href='styles/ui.css'/>");
-  res.send( "  </head>");
-  res.send( "  <body>");
-  res.send( "    <b>Third Test Page (generated from node.js)</b><br/>");
-  res.send( "  <hr width=100% size=1/>");
-  res.send( "  </body>");
-  res.send( "</html>");
+  var output = "";
+
+  output += "<html>";
+  output += "  <head>";
+  output += "    <link rel='stylesheet' href='styles/ui.css'/>";
+  output += "  </head>";
+  output += "  <body>";
+  output += "    <b>Third Test Page (generated from node.js)</b><br/>";
+  output += "  <hr width=100% size=1/>";
+  output += "  </body>";
+  output += "</html>";
+
+  res.send( output );
 });
 
 // error handling
