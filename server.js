@@ -40,6 +40,7 @@ app.get('/page3.html', function (req,res) {
   output += "  <body>";
   output += "    <b>Third Test Page (generated from node.js)</b><br/>";
   output += "  <hr width=100% size=1/>";
+  output += JSON.stringify( process.env );
   output += "  </body>";
   output += "</html>";
 
