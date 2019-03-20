@@ -30,6 +30,18 @@ app.get('/page2.html', function (req,res) {
     + '</body></html>');
 });
 
+app.get('/page3.html', function (req,res) {
+  res.send( "<html>");
+  res.send( "  <head>");
+  res.send( "    <link rel='stylesheet' href='styles/ui.css'/>");
+  res.send( "  </head>");
+  res.send( "  <body>");
+  res.send( "    <b>Third Test Page (generated from node.js)</b><br/>");
+  res.send( "  <hr width=100% size=1/>");
+  res.send( "  </body>");
+  res.send( "</html>");
+});
+
 // error handling
 app.use(function(err, req, res, next){
   console.error(err.stack);
