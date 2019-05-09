@@ -4,8 +4,8 @@
   "description": "Node.js sample app for OCP",
   "main": "server.js",
   "dependencies": {
-      "express": "*",
-      "ejs": "*"
+    "express": "*",
+    "ejs": "*"
   },
   "engine": {
     "node": "*",
