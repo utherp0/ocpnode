@@ -3,7 +3,6 @@ var express = require('express');
 var fs      = require('fs');
 var app     = express();
 var eps     = require('ejs');
-var petitions = require('./petitionhandle');
 
 app.engine('html', require('ejs').renderFile);
 
@@ -21,15 +20,6 @@ app.get('/', function (req, res)
 
 app.get('/page1.html', function (req,res ) {
   res.render('page1.html');
-});
-
-app.get('/petition', function (req,res) {
-  var data = petitions.loadData(req.query.id);
-
-  res.send('<html><head><title>UthTest2 Headers Output</title></head><body>'
-    + '<b>PETITION ' + req.query.id + ' responded:</b><br/>'
-    + data
-    + '</body></html>');
 });
 
 app.get('/page2.html', function (req,res) {
