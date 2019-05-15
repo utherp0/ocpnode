@@ -60,9 +60,12 @@ app.get('/page4.html', function (req,res) {
   output += "    <b>Environment Variables resident on host (generated from node.js)</b><br/>";
   output += "  <hr width=100% size=1/>";
 
-  for( name in process.env )
+  names = getEnv();
+
+  for( name in names )
   {
-    output += "<b>" + name + "</b> " + process.env[name] + "<br/>";
+    target = names[name];
+    output += "<b>" + target + "</b> " + process.env[target] + "<br/>";
   }
 
   output += JSON.stringify( process.env );
@@ -111,4 +114,18 @@ function showObject(obj) {
     } 
   }              
   return result;
+}
+
+function getEnv()
+{
+  var envNames = [];
+
+  for( name in process.env )
+  {
+    envNames.push( name );
+  }
+
+  envNames.sort();
+
+  return envNames;
 }
