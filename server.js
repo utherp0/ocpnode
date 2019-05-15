@@ -68,7 +68,6 @@ app.get('/page4.html', function (req,res) {
     output += "<b>" + target + "</b> " + process.env[target] + "<br/>";
   }
 
-  output += JSON.stringify( process.env );
   output += "  </body>";
   output += "</html>";
 
