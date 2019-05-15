@@ -50,9 +50,48 @@ app.get('/page3.html', function (req,res) {
 });
 
 app.get('/page4.html', function (req,res) {
-  var envkeys = _.keys(process.env);
+  var output = "";
 
-  res.send( 'Keys:' + envkeys );
+  output += "<html>";
+  output += "  <head>";
+  output += "    <link rel='stylesheet' href='styles/ui.css'/>";
+  output += "  </head>";
+  output += "  <body>";
+  output += "    <b>Environment Variables resident on host (generated from node.js)</b><br/>";
+  output += "  <hr width=100% size=1/>";
+
+  for( name in process.env )
+  {
+    output += "<b>" + name + "</b> " + process.env[name] + "<br/>";
+  }
+
+  output += JSON.stringify( process.env );
+  output += "  </body>";
+  output += "</html>";
+
+  res.send( output );
+});
+
+app.get( '/env', function (req,res) {
+  // Do I have a request variable?
+  var input = req.query.name;
+
+  if( input == null )
+  {
+    res.send( "\"No name parameter provided\"");
+  }
+
+  // Do I have an ENV with that name?
+  var envoutput = process.env[input];
+
+  if( envoutput == null )
+  {
+    res.send( "No env variable with name " + input + " found.");
+  }
+  else
+  {
+    res.send( input + ":" + envoutput ); 
+  }
 });
 
 // error handling
@@ -63,3 +102,13 @@ app.use(function(err, req, res, next){
 
 app.listen(port, ip);
 console.log('Server running on ' + ip + ':' + port);
+
+function showObject(obj) {
+  var result = "";
+  for (var p in obj) {
+    if( obj.hasOwnProperty(p) ) {
+      result += p + " , " + obj[p] + "\n";
+    } 
+  }              
+  return result;
+}
