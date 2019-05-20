@@ -8,7 +8,7 @@
     function dataFill()
     {
       $.ajax({url: "page4.html", success: function( result ) {
-        $("#statusInformation").text(result);
+        $("requestStatus").text(result);
       }});
     }
   </script>
