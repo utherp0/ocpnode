@@ -57,21 +57,15 @@ app.get('/page4.html', function (req,res) {
   output += "    <link rel='stylesheet' href='styles/ui.css'/>";
   output += "  </head>";
   output += "  <body>";
-  output += "    <b>Environment Variables resident on host (generated from node.js)</b><br/>";
-  output += "  <hr width=100% size=1/>";
-
-  names = getEnv();
-
-  for( name in names )
-  {
-    target = names[name];
-    output += "<b>" + target + "</b> " + process.env[target] + "<br/>";
-  }
-
+  output += getEnvs();
   output += "  </body>";
   output += "</html>";
 
   res.send( output );
+});
+
+app.get( '/envs', function (req,res) {
+  res.send( getEnvs() );
 });
 
 app.get( '/env', function (req,res) {
@@ -104,6 +98,23 @@ app.use(function(err, req, res, next){
 
 app.listen(port, ip);
 console.log('Server running on ' + ip + ':' + port);
+
+function getEnvs()
+{
+  output = "";
+  output += "<b>Environment Variables resident on host (generated from node.js)</b><br/>";
+  output += "<hr width=100% size=1/>";
+
+  names = getEnv();
+
+  for( name in names )
+  {
+    target = names[name];
+    output += "<b>" + target + "</b> " + process.env[target] + "<br/>";
+  }
+
+  return output;
+}
 
 function showObject(obj) {
   var result = "";
