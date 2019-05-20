@@ -8,7 +8,6 @@
     function dataFill()
     {
       $.ajax({url: "envs", success: function( result ) {
-        alert( result );
         $("#requestStatus").html(result);
       }});
     }
@@ -20,7 +19,7 @@
 <b>Test page for nodejs-ex</b><br/>
 Served from res.render (listening on /).<br/>
 <hr width="100%"/>
-<div class="statusInformation" id="requestStatus">
+<div class="submission" id="requestStatus">
 &nbsp;
 </div><br/>
 <hr width="100%"/>

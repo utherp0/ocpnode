@@ -46,7 +46,7 @@ td.standard {font-family:arial;font-size:9pt;color:black }
 .dheader { font-family:arial; font-size:9pt;color:black;font-weight:bold;text-align:center}
 tr.theader { background-color:yellow ! important }
 tr.broken { background-color:#ff1616;color:white }
-.submission { background-color:#555555;color:white }
+.submission { background-color:#555555;color:white;padding:3px }
 .even { background-color:#dddddd }
 .odd { background-color:#eeeeee }
 
