@@ -1,16 +1,26 @@
 <html>
 <head>
   <title>Test Page for nodejs-ex app</title>
-
+  <script src="scripts/jquery-3.4.1.mis.js"></script>
   <link rel="stylesheet" href="styles/ui.css"/>
+
+  <script>
+    function dataFill()
+    {
+      $.ajax({url: "page4.html", success: function( result ) {
+        $("#statusInformation").text(result);
+      }});
+    }
+  </script>
+
 </head>
 
-<body>
+<body onload="dataFill();">
 <b>Test page for nodejs-ex</b><br/>
 Served from res.render (listening on /).<br/>
 <hr width="100%"/>
 <div class="statusInformation" id="requestStatus">
-
+&nbsp;
 </div><br/>
 <hr width="100%"/>
 <div class="information">
