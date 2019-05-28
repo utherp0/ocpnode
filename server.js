@@ -3,6 +3,7 @@ var express = require('express');
 var fs      = require('fs');
 var app     = express();
 var eps     = require('ejs');
+var got     = require('got');
 
 app.engine('html', require('ejs').renderFile);
 
@@ -89,6 +90,25 @@ app.get( '/env', function (req,res) {
   {
     res.send( input + ":" + envoutput ); 
   }
+});
+
+app.get( '/nasa', function (req,res) {
+  var targetURL = "";
+  var targetExplanation = "";
+  got('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY', { json: true }).then(response => {
+    console.log(response.body.url);
+    console.log(response.body.explanation);
+
+    targetURL = response.body.url;
+    targetExplanation = response.body.explanation;
+    res.send( "<img src=\"" + targetURL + "\" width=\"500px\"><br/><br/>" + targetExplanation );
+  }).catch(error => {
+    console.log(error.response.body);
+    
+    targetURL = "No URL returned";
+    targetExplanation = "No explanation returned";
+  });
+
 });
 
 // error handling

@@ -11,6 +11,14 @@
         $("#requestStatus").html(result);
       }});
     }
+
+    function jsonCall()
+    {
+      $.ajax({url:"nasa", success: function(result) {
+        $("#jsonoutput").html(result);
+      }});
+    }
+
   </script>
 
 </head>
@@ -21,6 +29,11 @@
 Served from res.render (listening on /).<br/>
 <hr width="100%"/>
 <div class="submission" id="requestStatus">
+&nbsp;
+</div><br/>
+<hr width="100%"/>
+<input type="button" value="JSON TEST" onClick="jsonCall();"/>
+<div class="submission" id="jsonoutput">
 &nbsp;
 </div><br/>
 <hr width="100%"/>
