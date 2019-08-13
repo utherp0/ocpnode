@@ -15,7 +15,10 @@ app.use( '/images', express.static('images'));
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
 var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
+// Get the DB parameters - yeah, fkat text for password is insanely silly
 var dbhost = process.env.DBHOST;
+var dbuser = process.env.DBUSER;
+var dbpassword = process.env.DBPASSWORD;
 
 // Comment for git testing again
 app.get('/', function (req, res)
@@ -29,7 +32,20 @@ app.get('/', function (req, res)
 app.get('/dbconnect', function (req,res)
 {
   console.log("DBCONNECT request received....");
-  console.log("DBHOST set to " + dbhost);
+  console.log("Connection info set to " + dbhost + ":" + dbuser + ":" + dbpassword );
+
+  var connection = mysql.createConnection({host:dbhost,user:dbuser,password:dbpassword});
+
+  connection.connect(function(err)
+  {
+    if( err )
+    {
+      console.log( "Failed to connect.");
+      throw err;
+    }
+
+    console.log( "Connected to host " + dbhost );
+  });
 });
 
 app.get( '/envs', function (req,res) {
