@@ -46,21 +46,18 @@ app.get('/dbconnect', function (req,res)
     }
 
     console.log( "Connected to host " + dbhost + "...." );
-  });
 
-  // Attempt to create a database
-  console.log( "Attempting to get tables....");
-  connnection.query("show tables", function (err, result) 
-  {
-    if( err )
+    connection.query("show tables", function (err,result)
     {
-      console.log( "Error occurred when attempting to show the tables");
-      throw err;
-    }
-
-    console.log( "Query ");
+      if( err )
+      {
+        console.log( "Error occurred when attempting to show the tables");
+        throw err;
+      }
+  
+      console.log( "Query ");
+    });
   });
-});
 
 app.get( '/envs', function (req,res) {
   res.send( getEnvs() );
