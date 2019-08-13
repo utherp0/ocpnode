@@ -60,6 +60,7 @@ app.get('/dbconnect', function (req,res)
 
     console.log( "Query ");
   });
+});
 
 app.get( '/envs', function (req,res) {
   res.send( getEnvs() );
@@ -103,7 +104,6 @@ app.get( '/nasa', function (req,res) {
     targetURL = "No URL returned";
     targetExplanation = "No explanation returned";
   });
-
 });
 
 // error handling
