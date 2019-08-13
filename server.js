@@ -49,6 +49,7 @@ app.get('/dbconnect', function (req,res)
   });
 
   // Attempt to create a database
+  console.log( "Attempting to create a database....");
   connnection.query("CREATE DATABASE uthtest", function (err, result) 
   {
     if( err )
@@ -61,6 +62,7 @@ app.get('/dbconnect', function (req,res)
   });
 
   // Attempt to delete the database
+  console.log( "Attempting to drop the database....");
   connection.query("DROP DATABASE uthtest", function( err, result) 
   {
     if( err )
