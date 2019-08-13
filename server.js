@@ -35,6 +35,7 @@ app.get('/dbconnect', function (req,res)
   console.log("Connection info set to " + dbhost + ":" + dbuser + ":" + dbpassword );
 
   var connection = mysql.createConnection({host:dbhost,user:dbuser,password:dbpassword});
+  console.log("Created connection object....");
 
   connection.connect(function(err)
   {
@@ -44,7 +45,7 @@ app.get('/dbconnect', function (req,res)
       throw err;
     }
 
-    console.log( "Connected to host " + dbhost );
+    console.log( "Connected to host " + dbhost + "...." );
   });
 
   // Attempt to create a database
