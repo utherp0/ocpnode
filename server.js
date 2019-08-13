@@ -58,6 +58,7 @@ app.get('/dbconnect', function (req,res)
       console.log( "Query ");
     });
   });
+});
 
 app.get( '/envs', function (req,res) {
   res.send( getEnvs() );
