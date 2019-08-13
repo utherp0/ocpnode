@@ -56,7 +56,7 @@ app.get('/dbconnect', function (req,res)
         throw err;
       }
   
-      console.log( "Query ");
+      console.log( "Query " + result );
     });
   });
 });
