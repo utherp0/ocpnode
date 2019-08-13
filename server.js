@@ -34,7 +34,8 @@ app.get('/dbconnect', function (req,res)
   console.log("DBCONNECT request received....");
   console.log("Connection info set to " + dbhost + ":" + dbuser + ":" + dbpassword );
 
-  var connection = mysql.createConnection({host:dbhost,user:dbuser,password:dbpassword,database:sampledb});
+  //var connection = mysql.createConnection({host:dbhost,user:dbuser,password:dbpassword,database:sampledb});
+  var connection = mysql.createConnection({host:dbhost,user:dbuser,password:dbpassword});
   console.log("Created connection object....");
 
   connection.connect(function(err)
@@ -47,7 +48,7 @@ app.get('/dbconnect', function (req,res)
 
     console.log( "Connected to host " + dbhost + "...." );
 
-    connection.query("show tables", function (err,result)
+    connection.query("show databases", function (err,result)
     {
       if( err )
       {
