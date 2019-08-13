@@ -35,7 +35,7 @@ app.get('/dbcreate', function (req,res)
   console.log("Connection info set to " + dbhost + ":" + dbuser + ":" + dbpassword );
 
   //var connection = mysql.createConnection({host:dbhost,user:dbuser,password:dbpassword,database:sampledb});
-  var connection = mysql.createConnection({host:dbhost,user:dbuser,password:dbpassword});
+  var connection = mysql.createConnection({host:dbhost,user:dbuser,password:dbpassword,database:sampledb});
   console.log("Created connection object....");
 
   connection.connect(function(err)
