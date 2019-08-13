@@ -29,7 +29,7 @@ app.get('/', function (req, res)
 });
 
 // MySQL testing - requires a MySQL Pod running *and* an ENV set to the host (DBHOST)
-app.get('/dbconnect', function (req,res)
+app.get('/dbcreate', function (req,res)
 {
   console.log("DBCONNECT request received....");
   console.log("Connection info set to " + dbhost + ":" + dbuser + ":" + dbpassword );
@@ -48,15 +48,52 @@ app.get('/dbconnect', function (req,res)
 
     console.log( "Connected to host " + dbhost + "...." );
 
-    connection.query("show databases", function (err,result)
+    console.log( "Creating table customers....");
+    var sql = "CREATE TABLE customers (name VARCHAR(25), code VARCHAR(10))";
+    connection.query(sql, function (err, result) 
     {
-      if( err )
+      if (err) 
       {
-        console.log( "Error occurred when attempting to show the tables");
+        console.log( "Error occurred when attempting to create the table")
         throw err;
       }
-  
-      console.log( "Query " + result );
+      console.log("Table created....");
+    });
+
+    console.log( "Inserting data into customers....");
+    sql = "INSERT INTO customers (name,code) VALUES ('uth','10')";
+    connection.query(sql, function (err, result) 
+    {
+      if (err) 
+      {
+        console.log( "Error occurred when attempting to write to the table")
+        throw err;
+      }
+      console.log("Data created....");
+    });
+
+    console.log( "Selecting data from customers....");
+    sql = "SELECT * FROM customers";
+    connection.query(sql, function (err, result) 
+    {
+      if (err) 
+      {
+        console.log( "Error occurred when attempting to select data")
+        throw err;
+      }
+      console.log("Results from select " + result );
+    });
+
+    console.log( "Dropping table customers....");
+    sql = "DROP TABLE customers";
+    connection.query(sql, function (err, result) 
+    {
+      if (err) 
+      {
+        console.log( "Error occurred when attempting to drop table")
+        throw err;
+      }
+      console.log("Dropped table customers...." );
     });
   });
 });
