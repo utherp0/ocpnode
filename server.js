@@ -4,6 +4,7 @@ var fs      = require('fs');
 var app     = express();
 var eps     = require('ejs');
 var got     = require('got');
+var mysql   = require('mysql');
 
 app.engine('html', require('ejs').renderFile);
 
@@ -14,6 +15,8 @@ app.use( '/images', express.static('images'));
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
 var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
+var dbhost = process.env.DBHOST;
+
 // Comment for git testing again
 app.get('/', function (req, res)
 {
@@ -22,48 +25,11 @@ app.get('/', function (req, res)
   res.render('node_test.html');
 });
 
-app.get('/page1.html', function (req,res ) {
-  res.render('page1.html');
-});
-
-app.get('/page2.html', function (req,res) {
-  res.send('<html><head><title>UthTest2 Headers Output</title></head><body>'
-    + '<plaintext>'
-    + JSON.stringify(res.headers)
-    + '</plaintext>'
-    + '</body></html>');
-});
-
-app.get('/page3.html', function (req,res) {
-  var output = "";
-
-  output += "<html>";
-  output += "  <head>";
-  output += "    <link rel='stylesheet' href='styles/ui.css'/>";
-  output += "  </head>";
-  output += "  <body>";
-  output += "    <b>Third Test Page (generated from node.js)</b><br/>";
-  output += "  <hr width=100% size=1/>";
-  output += JSON.stringify( process.env );
-  output += "  </body>";
-  output += "</html>";
-
-  res.send( output );
-});
-
-app.get('/page4.html', function (req,res) {
-  var output = "";
-
-  output += "<html>";
-  output += "  <head>";
-  output += "    <link rel='stylesheet' href='styles/ui.css'/>";
-  output += "  </head>";
-  output += "  <body>";
-  output += getEnvs();
-  output += "  </body>";
-  output += "</html>";
-
-  res.send( output );
+// MySQL testing - requires a MySQL Pod running *and* an ENV set to the host (DBHOST)
+app.get('/dbconnect', function (req,res)
+{
+  console.log("DBCONNECT request received....");
+  console.log("DBHOST set to " + dbhost);
 });
 
 app.get( '/envs', function (req,res) {

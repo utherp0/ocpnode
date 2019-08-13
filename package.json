@@ -6,7 +6,8 @@
   "dependencies": {
     "express": "*",
     "ejs": "*",
-    "got": "*"
+    "got": "*",
+    "mysql": "*"
   },
   "engine": {
     "node": "*",
