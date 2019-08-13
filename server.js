@@ -45,28 +45,30 @@ app.get('/dbconnect', function (req,res)
     }
 
     console.log( "Connected to host " + dbhost );
+  });
 
-    // Attempt to create a database
-    connnection.query("CREATE DATABASE uthtest", function (err, result) {
-      if( err )
-      {
-        console.log( "Error occurred when attempting to create a database");
-        throw err;
-      }
+  // Attempt to create a database
+  connnection.query("CREATE DATABASE uthtest", function (err, result) 
+  {
+    if( err )
+    {
+      console.log( "Error occurred when attempting to create a database");
+      throw err;
+    }
 
-      console.log( "Created database 'uthtest'");
-    });
+    console.log( "Created database 'uthtest'");
+  });
 
-    // Attempt to delete the database
-    connection.query("DROP DATABASE uthtest", function( err, result) {
-      if( err )
-      {
-        console.log( "Error occurred when attempting to delete the database");
-        throw err;
-      }
+  // Attempt to delete the database
+  connection.query("DROP DATABASE uthtest", function( err, result) 
+  {
+    if( err )
+    {
+      console.log( "Error occurred when attempting to delete the database");
+      throw err;
+    }
 
-      console.log( "Dropped database 'uthtest'");
-    });
+    console.log( "Dropped database 'uthtest'");
   });
 });
 
