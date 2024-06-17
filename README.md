@@ -1,4 +1,4 @@
-An example node.js app for fast compilation as part of an OCP demo
+An example node.js app for fast compilation as part of an OCP development demo
 
 Usage:
 
